@@ -1,0 +1,54 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="% static {'share/fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'share/css/select2.min.css'%}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'share/css/bootstrap.min.css'%}">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'share/css/style.css'%}">
+
+    <title>Multi Select #3</title>
+  </head>
+  <body>
+  
+
+  <div class="content">
+    <h2 class="text-center">Sharing File</h2>
+    <div class="container text-left">
+      <div class="row justify-content-center">
+        <div class="col-7 text-center">
+          <form action="/share/{{pk}}" method="post">
+            {% csrf_token %}
+            <select name="Allselected" class="js-multiple-select form-control" multiple="multiple">
+              {% for user in Alluser %}
+                <option value="{{user.email}}">{{user.username}}</option>
+              {% endfor %}
+            </select>
+            <button class="btn btn-warning my-5">Share</button>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="{% static 'share/js/jquery-3.3.1.min.js'%}"></script>
+  <script src="{% static 'share/js/popper.min.js'%}"></script>
+  <script src="{% static 'share/js/bootstrap.min.js'%}"></script>
+  <script src="{% static 'share/js/select2.min.js'%}"></script>
+  <script src="{% static 'share/js/main.js'%}"></script>
+  </body>
+</html>
